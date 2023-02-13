@@ -34,7 +34,34 @@ func main() {
 	}
 
 	// Insert into table
-	
+	query := `insert into users (first_name, last_name) values ($1, $2)`
+	_, err = dbConnect.Exec(query, "Ewomazino", "Atu")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println("Inserted a row")
+
+	// Get updated rows from table
+	err = getAllRows(dbConnect)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Update a row
+	updateUser := `update users set first_name = $1 where id = $2`
+	_, err = dbConnect.Exec(updateUser, "Ewoma", 4)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println("Updated a user")
+
+	// Get updated rows from table
+	err = getAllRows(dbConnect)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }
 

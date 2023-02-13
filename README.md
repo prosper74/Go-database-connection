@@ -1,6 +1,6 @@
 ## Database Connection
 
-This is a Go prject showing the processes of connecting to a Postgres database
+A simple method of connecting a Go project to a database (Postgres is used in this project) using pgx package
 
 This project covers;
 
