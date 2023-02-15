@@ -63,6 +63,20 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Get one row by id
+	query = `select id, first_name, last_name from users where id = $1`
+
+	var first_name, last_name string
+	var id int
+
+	row := dbConnect.QueryRow(query, 1)
+	err = row.Scan(&id, &first_name, &last_name)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println("QueryRow returns", id, first_name, last_name)
+
 }
 
 func getAllRows(dbConnect *sql.DB) error {
